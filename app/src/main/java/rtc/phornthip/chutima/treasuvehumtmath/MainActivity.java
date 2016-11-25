@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,PlayActivity.class));
+                startActivity(new Intent(MainActivity.this,StatPlay.class));
             }
         });
     }   // Main Method
