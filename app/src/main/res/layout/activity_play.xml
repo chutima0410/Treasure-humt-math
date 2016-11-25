@@ -8,6 +8,52 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="rtc.phornthip.chutima.treasuvehumtmath.PlayActivity">
+    tools:context="rtc.phornthip.chutima.treasuvehumtmath.PlayActivity"
+    android:background="@drawable/c3">
 
+    <TextView
+        android:text="10"
+        android:layout_height="60dp"
+        android:id="@+id/textView2"
+        android:textSize="30sp"
+        android:background="@drawable/cir"
+        android:layout_width="100dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:layout_marginTop="350dp"
+        android:clickable="true" />
+
+
+    <TextView
+        android:text="10"
+        android:layout_height="60dp"
+        android:id="@+id/textView3"
+        android:textSize="30sp"
+        android:background="@drawable/cir"
+        android:layout_width="100dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:layout_marginTop="400dp"
+        android:layout_marginLeft="80dp"
+        android:clickable="true" />
+
+
+
+    <TextView
+        android:text="10"
+        android:layout_height="60dp"
+        android:id="@+id/textView4"
+        android:textSize="30sp"
+        android:background="@drawable/cir"
+        android:layout_width="100dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:layout_marginTop="360dp"
+        android:layout_marginLeft="200dp"
+        android:clickable="true" />
+
+    <TextView
+        android:text="10 + 20 ="
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView5"
+        android:textSize="36sp"
+        tools:textColor="@color/colorAccent" />
 </RelativeLayout>
