@@ -6,7 +6,9 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Random;
 
@@ -14,10 +16,13 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
 
     //Explicit
     private TextView questTextView, ch1TextView, ch2TextView,
-            ch3TextView, scoreTextView,timeTextView;
+            ch3TextView, scoreTextView, timeTextView;
     private Random random;
     private int firstAnInt, secondAnInt, answerAnInt, trueChoiceAnInt, scoreAnInt = 0;
     private int timeAnInt = 30; // นี่คือเวลาลูป
+    private ImageView boat1ImageView, boat2ImageView, boat3ImageView, boat4ImageView;
+    private ImageView[] imageViews;
+    private int falseAnInt = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,9 +38,17 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
         ch3TextView = (TextView) findViewById(R.id.textView4);
         scoreTextView = (TextView) findViewById(R.id.textView6);
         timeTextView = (TextView) findViewById(R.id.textView7);
+        boat1ImageView = (ImageView) findViewById(R.id.imageView3);
+        boat2ImageView = (ImageView) findViewById(R.id.imageView4);
+        boat3ImageView = (ImageView) findViewById(R.id.imageView5);
+        boat4ImageView = (ImageView) findViewById(R.id.imageView6);
+
+        imageViews = new ImageView[]{boat1ImageView, boat2ImageView, boat3ImageView,
+                boat4ImageView};
 
 
         //Choice Controller
+
         ch1TextView.setOnClickListener(this);
         ch2TextView.setOnClickListener(this);
         ch3TextView.setOnClickListener(this);
@@ -45,18 +58,15 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
         countTime();
 
 
-
     }//Main Method
 
     private void countTime() {
-        timeAnInt -=1;
+        timeAnInt -= 1;
         timeTextView.setText(Integer.toString(timeAnInt) + "วินาที");
         if (timeAnInt == 0) {
             // สิ่งที่จะทำหลังเวลาหมด
             startActivity(new Intent(PlayActivity.this, StatPlay.class));
         } // if
-
-
 
 
         Handler handler = new Handler();
@@ -65,7 +75,7 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
             public void run() {
                 countTime();
             }
-        },1000);
+        }, 1000);
 
     }   // countTime
 
@@ -83,7 +93,7 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
 
         //Show Choice
         TextView[] textViews = new TextView[]{ch1TextView, ch2TextView, ch3TextView};
-        for (int i=0;i<textViews.length;i++) {
+        for (int i = 0; i < textViews.length; i++) {
             textViews[i].setText(Integer.toString(random.nextInt(100)));
         }   // for
 
@@ -92,7 +102,6 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
 
 
     }   // playController
-
 
 
     @Override
@@ -116,12 +125,69 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
 
     private void checkAnser(int intChoice) {
 
-        if (intChoice == answerAnInt) {
-            scoreAnInt += 1;
+        for (int i = 0; i < imageViews.length; i++) {
+            imageViews[i].setVisibility(View.INVISIBLE);
         }
 
-        scoreTextView.setText("Scoer = " + Integer.toString(scoreAnInt));
+        if (scoreAnInt < 5) {
+            imageViews[0].setVisibility(View.VISIBLE);
+        } else if (scoreAnInt < 10) {
+            imageViews[1].setVisibility(View.VISIBLE);
+        } else if (scoreAnInt < 15) {
+            imageViews[2].setVisibility(View.VISIBLE);
+        } else {
+            imageViews[3].setVisibility(View.VISIBLE);
+        }
 
-    }
+
+
+        if (intChoice == answerAnInt) {
+            scoreAnInt += 1;
+        } else {
+
+            if (scoreAnInt >= 3) {
+                Toast.makeText(PlayActivity.this, "Game Over", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent();
+                finish();
+                startActivity(intent);
+            }
+
+            falseAnInt += 1;
+            Log.d("3devV1", "false ==> " + falseAnInt);
+
+            switch (falseAnInt) {
+
+                case 0:
+                    boat1ImageView.setImageResource(R.drawable.y);
+                    boat2ImageView.setImageResource(R.drawable.y);
+                    boat3ImageView.setImageResource(R.drawable.y);
+                    boat4ImageView.setImageResource(R.drawable.y);
+                    break;
+
+                case 1:
+                    boat1ImageView.setImageResource(R.drawable.y1);
+                    boat2ImageView.setImageResource(R.drawable.y1);
+                    boat3ImageView.setImageResource(R.drawable.y1);
+                    boat4ImageView.setImageResource(R.drawable.y1);
+                    break;
+
+                case 2:
+                    boat1ImageView.setImageResource(R.drawable.y2);
+                    boat2ImageView.setImageResource(R.drawable.y2);
+                    boat3ImageView.setImageResource(R.drawable.y2);
+                    boat4ImageView.setImageResource(R.drawable.y2);
+                    break;
+
+            }   // switch
+
+
+
+
+        }
+
+        scoreTextView.setText("Score = " + Integer.toString(scoreAnInt));
+
+
+    }   // checkAnser
 
 }   //Main Class
