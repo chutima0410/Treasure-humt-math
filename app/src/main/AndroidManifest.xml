@@ -18,7 +18,8 @@
         <activity android:name=".PlayActivity" />
         <activity android:name=".StatPlay" />
         <activity android:name=".Cartoon1" />
-        <activity android:name=".Cartoon2"></activity>
+        <activity android:name=".Cartoon2" />
+
     </application>
 
 </manifest>

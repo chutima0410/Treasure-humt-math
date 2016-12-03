@@ -1,6 +1,8 @@
 package rtc.phornthip.chutima.treasuvehumtmath;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -11,9 +13,11 @@ import java.util.Random;
 public class PlayActivity extends AppCompatActivity implements View.OnClickListener {
 
     //Explicit
-    private TextView questTextView, ch1TextView, ch2TextView, ch3TextView, scoreTextView;
+    private TextView questTextView, ch1TextView, ch2TextView,
+            ch3TextView, scoreTextView,timeTextView;
     private Random random;
     private int firstAnInt, secondAnInt, answerAnInt, trueChoiceAnInt, scoreAnInt = 0;
+    private int timeAnInt = 30; // นี่คือเวลาลูป
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +32,7 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
         ch2TextView = (TextView) findViewById(R.id.textView3);
         ch3TextView = (TextView) findViewById(R.id.textView4);
         scoreTextView = (TextView) findViewById(R.id.textView6);
+        timeTextView = (TextView) findViewById(R.id.textView7);
 
 
         //Choice Controller
@@ -37,8 +42,32 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
 
         playController();
 
+        countTime();
+
+
 
     }//Main Method
+
+    private void countTime() {
+        timeAnInt -=1;
+        timeTextView.setText(Integer.toString(timeAnInt) + "วินาที");
+        if (timeAnInt == 0) {
+            // สิ่งที่จะทำหลังเวลาหมด
+            startActivity(new Intent(PlayActivity.this, StatPlay.class));
+        } // if
+
+
+
+
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                countTime();
+            }
+        },1000);
+
+    }   // countTime
 
     private void playController() {
 
