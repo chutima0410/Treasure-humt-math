@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Treasuvehumtmath.iml" filepath="$PROJECT_DIR$/Treasuvehumtmath.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Treasure-humt-math2.iml" filepath="$PROJECT_DIR$/Treasure-humt-math2.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
