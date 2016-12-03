@@ -20,6 +20,8 @@
         <activity android:name=".Cartoon1" />
         <activity android:name=".Cartoon2" />
 
+
+
     </application>
 
 </manifest>
