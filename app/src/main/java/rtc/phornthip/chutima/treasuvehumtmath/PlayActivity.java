@@ -29,6 +29,7 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
         ch3TextView = (TextView) findViewById(R.id.textView4);
         scoreTextView = (TextView) findViewById(R.id.textView6);
 
+
         //Choice Controller
         ch1TextView.setOnClickListener(this);
         ch2TextView.setOnClickListener(this);
