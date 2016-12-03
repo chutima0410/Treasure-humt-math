@@ -63,9 +63,12 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
     private void countTime() {
         timeAnInt -= 1;
         timeTextView.setText(Integer.toString(timeAnInt) + "วินาที");
-        if (timeAnInt == 0) {
+        if (timeAnInt < 0) {
             // สิ่งที่จะทำหลังเวลาหมด
-            startActivity(new Intent(PlayActivity.this, StatPlay.class));
+
+
+           myRestartApp();
+
         } // if
 
 
@@ -147,9 +150,10 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
 
             if (scoreAnInt >= 3) {
                 Toast.makeText(PlayActivity.this, "Game Over", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent();
-                finish();
-                startActivity(intent);
+
+                myRestartApp();
+
+
             }
 
             falseAnInt += 1;
@@ -189,5 +193,16 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
 
 
     }   // checkAnser
+
+    private void myRestartApp() {
+
+        scoreAnInt = 0;
+        timeAnInt = 30;
+
+        Intent intent = getIntent();
+        finish();
+        startActivity(intent);
+
+    }
 
 }   //Main Class
