@@ -63,14 +63,14 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
     private void countTime() {
         timeAnInt -= 1;
         timeTextView.setText(Integer.toString(timeAnInt) + "วินาที");
-        if (timeAnInt < 0) {
-            // สิ่งที่จะทำหลังเวลาหมด
+       if (timeAnInt < 0) {
+            //สิ่งที่จะทำหลังเวลาหมด
 
 
            myRestartApp();
 
 
-        } // if
+        }  //if
 
 
         Handler handler = new Handler();
@@ -81,7 +81,7 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
             }
         }, 1000);
 
-    }   // countTime
+    }    //countTime
 
     private void playController() {
 
@@ -163,24 +163,30 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
             switch (falseAnInt) {
 
                 case 0:
-                    boat1ImageView.setImageResource(R.drawable.y);
-                    boat2ImageView.setImageResource(R.drawable.y);
-                    boat3ImageView.setImageResource(R.drawable.y);
-                    boat4ImageView.setImageResource(R.drawable.y);
+                    boat1ImageView.setImageResource(R.drawable.boat1);
+                    boat2ImageView.setImageResource(R.drawable.boat1);
+                    boat3ImageView.setImageResource(R.drawable.boat1);
+                    boat4ImageView.setImageResource(R.drawable.boat1);
                     break;
 
                 case 1:
-                    boat1ImageView.setImageResource(R.drawable.y1);
-                    boat2ImageView.setImageResource(R.drawable.y1);
-                    boat3ImageView.setImageResource(R.drawable.y1);
-                    boat4ImageView.setImageResource(R.drawable.y1);
+                    boat1ImageView.setImageResource(R.drawable.boat2);
+                    boat2ImageView.setImageResource(R.drawable.boat2);
+                    boat3ImageView.setImageResource(R.drawable.boat2);
+                    boat4ImageView.setImageResource(R.drawable.boat2);
                     break;
 
                 case 2:
-                    boat1ImageView.setImageResource(R.drawable.y2);
-                    boat2ImageView.setImageResource(R.drawable.y2);
-                    boat3ImageView.setImageResource(R.drawable.y2);
-                    boat4ImageView.setImageResource(R.drawable.y2);
+                    boat1ImageView.setImageResource(R.drawable.boat3);
+                    boat2ImageView.setImageResource(R.drawable.boat3);
+                    boat3ImageView.setImageResource(R.drawable.boat3);
+                    boat4ImageView.setImageResource(R.drawable.boat3);
+                    break;
+                case 3:
+                    boat1ImageView.setImageResource(R.drawable.boat4);
+                    boat2ImageView.setImageResource(R.drawable.boat4);
+                    boat3ImageView.setImageResource(R.drawable.boat4);
+                    boat4ImageView.setImageResource(R.drawable.boat4);
                     break;
 
             }   // switch
